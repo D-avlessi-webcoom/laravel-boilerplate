@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "world-connect/boilerplate",
+    "name": "world-connect/laravel-boilerplate",
     "type": "project",
     "description": "It's a Laravel boilerplate to speed up the development process with all logic configured for auth, granting etc",
     "keywords": [
