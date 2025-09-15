@@ -78,6 +78,12 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/D-avlessi-webcoom/laravel-boilerplate"
+        }
+    ]
 }
