@@ -83,7 +83,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/D-avlessi-webcoom/laravel-boilerplate"
+            "url": "git@github.com:D-avlessi-webcoom/laravel-boilerplate.git"
         }
     ]
 }
