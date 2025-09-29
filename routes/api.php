@@ -25,13 +25,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::match(['put', 'patch'], '/roles/{role}/permissions', [RolePermissionController::class, 'assignPermissions']);
 });
 
-// User routes
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/users', [UserController::class, 'index']);
-    Route::post('/users', [UserController::class, 'store']);
-    Route::get('/users/{id}', [UserController::class, 'show']);
-    Route::match(['put', 'patch'], '/users/{id}', [UserController::class, 'update']);
-    Route::delete('/users/{id}', [UserController::class, 'destroy']);
-});
-
-Route::apiResource('/users', App\Http\Controllers\API\UserController::class);
+// Routes pour User
+Route::apiResource('users', \App\Http\Controllers\UserController::class);

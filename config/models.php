@@ -285,6 +285,18 @@ return [
             'password_resets',
             'personal_access_tokens',
             'password_reset_tokens',
+            'users',
+            'cache',
+            'cache_locks',
+            'jobs',
+            'failed_jobs',
+            'job_batches',
+            'model_has_permissions',
+            'model_has_roles',
+            'permissions',
+            'roles',
+            'role_has_permissions',
+            'sessions',
         ],
 
         /*
@@ -448,7 +460,7 @@ return [
         | if you want the $fillable to be generated in base files
         |
         */
-        'fillable_in_base_files' => false,
+        'fillable_in_base_files' => true,
 
         /*
         |--------------------------------------------------------------------------
