@@ -38,7 +38,44 @@ php artisan make:model NomDuModele -m
 
 # Générer un nouveau service
 php artisan make:service NomDuService
+
+# Générer un CRUD complet pour un modèle existant
+php artisan make:crud NomDuModele
 ```
+
+#### Commande `make:crud`
+
+La commande `make:crud` génère automatiquement un contrôleur CRUD complet pour un modèle existant avec les fonctionnalités suivantes :
+
+- Méthodes CRUD complètes (index, store, show, update, destroy)
+- Gestion des erreurs avec try/catch
+- Réponses JSON structurées
+- Validation des données
+- Routes API RESTful
+
+**Options :**
+- `{model}` : (Optionnel) Nom du modèle pour lequel générer le CRUD. Si non spécifié, une liste des modèles disponibles sera affichée.
+
+**Exemple :**
+```bash
+# Générer un CRUD pour le modèle User
+php artisan make:crud User
+```
+
+**Fonctionnalités :**
+- Vérification de l'existence du modèle
+- Demande de confirmation avant d'écraser un contrôleur existant
+- Détection automatique des routes existantes pour éviter les doublons
+- Messages d'erreur et de succès en français
+- Structure de réponse standardisée :
+  ```json
+  {
+    "success": true,
+    "message": "Message de succès",
+    "data": {},
+    "errors": []
+  }
+  ```
 
 ## 📦 Packages inclus
 
