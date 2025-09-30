@@ -67,6 +67,8 @@ php artisan make:crud User
 - Demande de confirmation avant d'écraser un contrôleur existant
 - Détection automatique des routes existantes pour éviter les doublons
 - Messages d'erreur et de succès en français
+- Journalisation complète des erreurs dans `storage/logs/laravel.log`
+- Gestion sécurisée des erreurs sans exposer de détails sensibles
 - Structure de réponse standardisée :
   ```json
   {
@@ -76,6 +78,20 @@ php artisan make:crud User
     "errors": []
   }
   ```
+
+**Journalisation des erreurs :**
+- Toutes les erreurs sont automatiquement enregistrées avec :
+  - Message d'erreur détaillé
+  - Contexte de la requête (données, utilisateur, etc.)
+  - Stack trace pour le débogage
+  - Horodatage précis
+- Les erreurs sont classées par type d'opération (création, lecture, mise à jour, suppression)
+- Les messages d'erreur utilisateur sont génériques pour la sécurité
+
+**Bonnes pratiques :**
+1. Vérifiez régulièrement les fichiers de logs dans `storage/logs/`
+2. Configurez un système de surveillance des logs pour les environnements de production
+3. Utilisez la commande `php artisan pail` pour surveiller les logs en temps réel
 
 ## 📦 Packages inclus
 

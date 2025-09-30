@@ -8,12 +8,13 @@
         "framework"
     ],
     "license": "MIT",
-    "version": "v1.1.0",
+    "version": "v1.1.2",
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
+        "opcodesio/log-viewer": "^3.19",
         "spatie/laravel-permission": "^6.21"
     },
     "require-dev": {

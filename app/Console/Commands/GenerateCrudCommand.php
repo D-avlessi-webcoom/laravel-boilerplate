@@ -111,6 +111,7 @@ namespace App\Http\Controllers;
 
 use App\\Models\\{$modelName};
 use Illuminate\\Http\\Request;
+use Illuminate\\Support\\Facades\\Log;
 
 class {$controllerName} extends Controller
 {
@@ -118,22 +119,27 @@ class {$controllerName} extends Controller
     {
         try {
             \${$modelPlural} = {$modelName}::all();
-            return response()->json([
                 'success' => true,
                 'data' => \${$modelPlural},
                 'message' => 'Liste des objets {$modelName} récupérée avec succès'
             ]);
         } catch (\\Exception \$e) {
+            Log::error('Erreur lors de la récupération des {$modelName}s', [
+                'error' => \$e->getMessage(),
+                'trace' => \$e->getTraceAsString(),
+                'data' => \$request->all()
+            ]);
+            
             return response()->json([
                 'success' => false,
-                'message' => 'Échec de la récupération de la liste des objets {$modelName}',
-                'errors' => [\$e->getMessage()]
+                'message' => 'Échec de la récupération de la liste des objets {$modelName}s',
+                'errors' => ['Une erreur est survenue lors du traitement de votre demande.']
             ], 500);
         }
     }
 
     public function store(Request \$request)
-    {
+{{ ... }}
         try {
             \$validated = \$request->validate({$rulesString});
 
@@ -152,10 +158,16 @@ class {$controllerName} extends Controller
                 'errors' => \$e->errors()
             ], 422);
         } catch (\\Exception \$e) {
+            Log::error('Erreur lors de la création d\'un {$modelName}', [
+                'error' => \$e->getMessage(),
+                'data' => \$request->all(),
+                'trace' => \$e->getTraceAsString()
+            ]);
+            
             return response()->json([
                 'success' => false,
                 'message' => 'Échec de la création de l\'objet {$modelName}',
-                'errors' => [\$e->getMessage()]
+                'errors' => ['Une erreur est survenue lors de la création.']
             ], 500);
         }
     }
@@ -169,10 +181,16 @@ class {$controllerName} extends Controller
                 'message' => 'Objet {$modelName} récupéré avec succès'
             ]);
         } catch (\\Exception \$e) {
+            Log::error('Erreur lors de la récupération du {$modelName} ' . \${$modelVarName}->id, [
+                'error' => \$e->getMessage(),
+                '{$modelVarName}_id' => \${$modelVarName}->id,
+                'trace' => \$e->getTraceAsString()
+            ]);
+            
             return response()->json([
                 'success' => false,
                 'message' => 'Échec de la récupération de l\'objet {$modelName}',
-                'errors' => [\$e->getMessage()]
+                'errors' => ['Une erreur est survenue lors de la récupération.']
             ], 500);
         }
     }
@@ -197,10 +215,17 @@ class {$controllerName} extends Controller
                 'errors' => \$e->errors()
             ], 422);
         } catch (\\Exception \$e) {
+            Log::error('Erreur lors de la mise à jour du {$modelName} ' . \${$modelVarName}->id, [
+                'error' => \$e->getMessage(),
+                '{$modelVarName}_id' => \${$modelVarName}->id,
+                'data' => \$request->all(),
+                'trace' => \$e->getTraceAsString()
+            ]);
+            
             return response()->json([
                 'success' => false,
                 'message' => 'Échec de la mise à jour de l\'objet {$modelName}',
-                'errors' => [\$e->getMessage()]
+                'errors' => ['Une erreur est survenue lors de la mise à jour.']
             ], 500);
         }
     }
@@ -215,10 +240,16 @@ class {$controllerName} extends Controller
                 'message' => 'Objet {$modelName} supprimé avec succès'
             ]);
         } catch (\\Exception \$e) {
+            Log::error('Erreur lors de la suppression du {$modelName} ' . \${$modelVarName}->id, [
+                'error' => \$e->getMessage(),
+                '{$modelVarName}_id' => \${$modelVarName}->id,
+                'trace' => \$e->getTraceAsString()
+            ]);
+            
             return response()->json([
                 'success' => false,
                 'message' => 'Échec de la suppression de l\'objet {$modelName}',
-                'errors' => [\$e->getMessage()]
+                'errors' => ['Une erreur est survenue lors de la suppression.']
             ], 500);
         }
     }
